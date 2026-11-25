@@ -1,0 +1,196 @@
+{
+ "runs": [
+  {
+   "BST": {
+    "mix": {
+     "Astrocyte": 0.0999999999999999,
+     "Endothelial": 0.0499999999999999,
+     "Ependymal": 0.0,
+     "Excitatory": 0.1833333333333333,
+     "Inhibitory": 0.5499999999999999,
+     "Microglia": 0.0499999999999999,
+     "OD Immature": 0.0133333333333333,
+     "OD Mature": 0.04,
+     "Pericytes": 0.0133333333333333
+    },
+    "markers": [
+     "Adora2a",
+     "Cartpt",
+     "Crhr2",
+     "Htr2c",
+     "Npas1",
+     "Npy1r",
+     "Penk",
+     "Sp9",
+     "Tac1"
+    ]
+   },
+   "MPA": {
+    "mix": {
+     "Astrocyte": 0.12,
+     "Endothelial": 0.05,
+     "Ependymal": 0.0,
+     "Excitatory": 0.2333333333333333,
+     "Inhibitory": 0.5,
+     "Microglia": 0.05,
+     "OD Immature": 0.0133333333333333,
+     "OD Mature": 0.02,
+     "Pericytes": 0.0133333333333333
+    },
+    "markers": [
+     "Adcyap1",
+     "Bdnf",
+     "Cyp19a1",
+     "Esr1",
+     "Gal",
+     "Nos1",
+     "Nts",
+     "Pgr",
+     "Tac2"
+    ]
+   },
+   "MPN": {
+    "mix": {
+     "Astrocyte": 0.0999999999999999,
+     "Endothelial": 0.0499999999999999,
+     "Ependymal": 0.0,
+     "Excitatory": 0.1833333333333333,
+     "Inhibitory": 0.58,
+     "Microglia": 0.04,
+     "OD Immature": 0.01,
+     "OD Mature": 0.0233333333333333,
+     "Pericytes": 0.0133333333333333
+    },
+    "markers": [
+     "Calcr",
+     "Cartpt",
+     "Cck",
+     "Cyp19a1",
+     "Esr1",
+     "Gal",
+     "Kiss1r",
+     "Nos1",
+     "Pgr",
+     "Tac1",
+     "Tac2"
+    ]
+   },
+   "PV": {
+    "mix": {
+     "Astrocyte": 0.15,
+     "Endothelial": 0.06,
+     "Ependymal": 0.05,
+     "Excitatory": 0.2333333333333333,
+     "Inhibitory": 0.3833333333333333,
+     "Microglia": 0.0566666666666666,
+     "OD Immature": 0.0133333333333333,
+     "OD Mature": 0.04,
+     "Pericytes": 0.0133333333333333
+    },
+    "markers": [
+     "Adcyap1",
+     "Avpr1a",
+     "Cartpt",
+     "Crh",
+     "Crhbp",
+     "Gal",
+     "Npy1r",
+     "Nts",
+     "Sp9",
+     "Sst",
+     "Tacr3",
+     "Th"
+    ]
+   },
+   "PVH": {
+    "mix": {
+     "Astrocyte": 0.12,
+     "Endothelial": 0.0666666666666666,
+     "Ependymal": 0.0,
+     "Excitatory": 0.5666666666666667,
+     "Inhibitory": 0.15,
+     "Microglia": 0.0433333333333333,
+     "OD Immature": 0.01,
+     "OD Mature": 0.03,
+     "Pericytes": 0.0133333333333333
+    },
+    "markers": [
+     "Adcyap1",
+     "Avpr1a",
+     "Cartpt",
+     "Crh",
+     "Nnat",
+     "Oxt",
+     "Trh"
+    ]
+   },
+   "PVT": {
+    "mix": {
+     "Astrocyte": 0.1,
+     "Endothelial": 0.05,
+     "Ependymal": 0.0,
+     "Excitatory": 0.6666666666666666,
+     "Inhibitory": 0.0866666666666666,
+     "Microglia": 0.0433333333333333,
+     "OD Immature": 0.01,
+     "OD Mature": 0.03,
+     "Pericytes": 0.0133333333333333
+    },
+    "markers": [
+     "Adcyap1",
+     "Brs3",
+     "Calcr",
+     "Cartpt",
+     "Cbln2",
+     "Cplx3",
+     "Ebf3",
+     "Ntsr1",
+     "Penk",
+     "Slc17a6",
+     "Syt2"
+    ]
+   },
+   "V3": {
+    "mix": {
+     "Astrocyte": 0.1,
+     "Endothelial": 0.05,
+     "Ependymal": 0.7333333333333334,
+     "Excitatory": 0.0,
+     "Inhibitory": 0.0,
+     "Microglia": 0.0666666666666666,
+     "OD Immature": 0.0,
+     "OD Mature": 0.0066666666666666,
+     "Pericytes": 0.0433333333333333
+    },
+    "markers": [
+     "Aldh1l1",
+     "Aqp4",
+     "Cd24a",
+     "Gjc3",
+     "Mlc1",
+     "Nup62cl",
+     "Rnd3",
+     "Ttyh2"
+    ]
+   },
+   "fx": {
+    "mix": {
+     "Astrocyte": 0.2333333333333333,
+     "Endothelial": 0.0833333333333333,
+     "Ependymal": 0.0,
+     "Excitatory": 0.0,
+     "Inhibitory": 0.0,
+     "Microglia": 0.0666666666666666,
+     "OD Immature": 0.0833333333333333,
+     "OD Mature": 0.4933333333333333,
+     "Pericytes": 0.04
+    },
+    "markers": [
+     "Ermn",
+     "Mbp",
+     "Opalin"
+    ]
+   }
+  }
+ ]
+}

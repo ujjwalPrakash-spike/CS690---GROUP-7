@@ -1,0 +1,13 @@
+dataset,comparison,cells,m3_right_other_wrong,m3_wrong_other_right,p_value
+starmap,M3 CardEM vs k-means (oracle names),1049,63,11,0.0
+starmap,M3 CardEM vs Nearest expert card,1049,40,10,0.0
+starmap,M3 CardEM vs NicheAgent-style,1049,28,34,0.5258
+starmap,M3 CardEM vs LLMiniST,1049,76,28,0.0
+starmap,M3 CardEM vs M1 cosine,1049,40,12,0.0001
+starmap,M3 CardEM vs M2 EM,1049,17,10,0.2478
+merfish,M3 CardEM vs k-means (oracle names),5926,392,2041,0.0
+merfish,M3 CardEM vs Nearest expert card,5926,435,2603,0.0
+merfish,M3 CardEM vs NicheAgent-style,5926,496,2431,0.0
+merfish,M3 CardEM vs LLMiniST,800,106,145,0.0163
+merfish,M3 CardEM vs M1 cosine,5926,561,772,0.0
+merfish,M3 CardEM vs M2 EM,5926,827,865,0.3684

@@ -1,0 +1,13 @@
+dataset,method,accuracy,ARI,NMI,note
+starmap,M1 cosine + majority vote,0.91,0.772,0.737,
+starmap,M2 EM + review + Potts,0.93,0.811,0.769,"tau=10, lambda=0.5, beta=1"
+starmap,M3 CardEM,0.937,0.833,0.8,"lambda=0.05, tau=9.2, beta=5.75, renamed=False"
+starmap,  CardEM without marker-gene view,0.941,0.839,0.809,
+starmap,  CardEM with fixed tau=10,0.937,0.833,0.8,
+starmap,  CardEM with fixed lambda=0.5,0.937,0.833,0.8,
+starmap,  CardEM with plain Potts,0.933,0.825,0.793,
+starmap,  CardEM with fixed beta=1,0.927,0.805,0.769,
+starmap,  CardEM without Gemini review,0.915,0.785,0.752,
+starmap,"Expert cards, cosine nearest (needs labels)",0.908,0.77,0.741,
+starmap,"k-means, best possible naming",0.888,0.738,0.691,
+starmap,Majority region,0.428,0.0,0.0,

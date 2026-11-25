@@ -1,0 +1,7 @@
+ai,strategy,labels,exact,exact_lo,exact_hi,partial,miss,consistent
+ChatGPT,S1_no_tissue,36,0.111,0.044,0.253,0.611,0.278,0.833
+ChatGPT,S1_with_tissue,36,0.5,0.345,0.655,0.361,0.139,0.167
+ChatGPT,S2_name_function,36,0.111,0.044,0.253,0.889,0.0,0.917
+Claude,S1_no_tissue,36,0.528,0.37,0.68,0.167,0.306,0.583
+Claude,S1_with_tissue,36,0.75,0.589,0.862,0.028,0.222,0.917
+Claude,S2_name_function,36,0.5,0.345,0.655,0.25,0.25,1.0

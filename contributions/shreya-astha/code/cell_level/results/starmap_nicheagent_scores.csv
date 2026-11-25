@@ -1,0 +1,4 @@
+dataset,method,cells,accuracy,ARI,NMI
+starmap,nearest_card,1049,0.908,0.77,0.741
+starmap,nicheagent_style,1049,0.929,0.831,0.774
+starmap,nicheagent_style_smoothed,1049,0.943,0.854,0.811

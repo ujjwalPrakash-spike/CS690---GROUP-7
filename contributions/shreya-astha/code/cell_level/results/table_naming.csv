@@ -1,0 +1,11 @@
+dataset,method,accuracy,oracle_named_accuracy,naming_loss
+starmap,Nearest expert card,0.9085,0.9085,0.0
+starmap,NicheAgent-style,0.9428,0.9428,0.0
+starmap,M1 cosine,0.9104,0.9104,0.0
+starmap,M2 EM,0.9304,0.9304,0.0
+starmap,M3 CardEM,0.9371,0.9371,0.0
+merfish,Nearest expert card,0.5727,0.5727,0.0
+merfish,NicheAgent-style,0.5334,0.5334,0.0
+merfish,M1 cosine,0.2425,0.498,0.2555
+merfish,M2 EM,0.2133,0.4001,0.1868
+merfish,M3 CardEM,0.2069,0.6083,0.4015

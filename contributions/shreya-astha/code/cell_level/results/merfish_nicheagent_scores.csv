@@ -1,0 +1,4 @@
+dataset,method,cells,accuracy,ARI,NMI
+merfish,nearest_card,5926,0.573,0.296,0.419
+merfish,nicheagent_style,5926,0.516,0.264,0.38
+merfish,nicheagent_style_smoothed,5926,0.533,0.296,0.408
