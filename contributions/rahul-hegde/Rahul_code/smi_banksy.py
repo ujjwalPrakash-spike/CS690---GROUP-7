@@ -5,8 +5,8 @@ Wilcoxon markers per niche.
     python smi_banksy.py --grid    # also the oracle-tuned grid (k_geom x resolution x 3 seeds, slow)
     python smi_banksy.py --check   # also run one config twice to confirm the seeding is deterministic
 
-Writes results/banksy_smi_labels.csv, results/Banksy_SMI.xlsx, results/banksy_smi_purity.csv,
-results/banksy_smi_untuned.csv, figures/banksy_smi_vs_truth.png (and results/banksy_smi_grid_seeded.csv with --grid).
+Writes results/CosMX/banksy_smi_labels.csv, results/CosMX/Banksy_SMI.xlsx, results/CosMX/banksy_smi_purity.csv,
+results/CosMX/banksy_smi_untuned.csv, results/CosMX/banksy_smi_vs_truth.png (and results/CosMX/banksy_smi_grid_seeded.csv with --grid).
 """
 import argparse
 
@@ -21,7 +21,7 @@ from harmony import harmonize
 from sklearn.metrics import adjusted_rand_score as ari
 from sklearn.metrics import normalized_mutual_info_score as nmi
 
-from common import fig, load, marker_tables, res, save_markers, seed_all
+from common import load, marker_tables, res, save_markers, seed_all
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--grid", action="store_true", help="run the oracle-tuned grid")
@@ -81,7 +81,7 @@ if args.check:
 
 # Untuned reference: the BANKSY vignette's resolution 0.6 with k_geom=30, chosen without ground truth
 untuned = pd.DataFrame(scores(run(30, [0.6]), 30, 0))
-untuned.to_csv(res("banksy_smi_untuned.csv"), index=False)
+untuned.to_csv(res("CosMX", "banksy_smi_untuned.csv"), index=False)
 print("untuned reference:\n", untuned.to_string(index=False))
 
 if args.grid:
@@ -92,7 +92,7 @@ if args.grid:
         for sd in [0, 1, 42]:
             rows += scores(run(kg, [0.2, 0.3, 0.4, 0.5], seed=sd), kg, sd)
     g = pd.DataFrame(rows)
-    g.to_csv(res("banksy_smi_grid_seeded.csv"), index=False)
+    g.to_csv(res("CosMX", "banksy_smi_grid_seeded.csv"), index=False)
     print(g.groupby(["k_geom", "res"])
            .agg(k_mean=("k", "mean"), k_sd=("k", "std"), ARI=("ARI", "mean"), ARI_sd=("ARI", "std"),
                 NMI=("NMI", "mean"), NMI_sd=("NMI", "std"))
@@ -104,17 +104,17 @@ ad.obs["banksy"] = pd.Categorical([str(x) for x in r.loc[r.index[0], "labels"].d
 print("adopted: k", r.loc[r.index[0], "num_labels"],
       "| ARI", round(ari(ad.obs["Region"], ad.obs["banksy"]), 3),
       "| NMI", round(nmi(ad.obs["Region"], ad.obs["banksy"]), 3))
-ad.obs[["banksy", "Region", "cx_g", "cy_g", "batch"]].to_csv(res("banksy_smi_labels.csv"))
+ad.obs[["banksy", "Region", "cx_g", "cy_g", "batch"]].to_csv(res("CosMX", "banksy_smi_labels.csv"))
 
 # Markers from raw counts (CP10k + log1p) on all 960 genes, not from the BANKSY matrix
 counts.obs["banksy"] = ad.obs["banksy"].values
-save_markers(res("Banksy_SMI.xlsx"), *marker_tables(counts, "banksy"))
+save_markers(res("CosMX", "Banksy_SMI.xlsx"), *marker_tables(counts, "banksy", all_genes=True))
 
 # Purity and majority region per niche: the input to the pre-registered scoring key
 ct = pd.crosstab(ad.obs["banksy"], ad.obs["Region"])
 purity = pd.DataFrame({"maps_to": ct.idxmax(axis=1), "purity": (ct.max(axis=1) / ct.sum(axis=1)).round(2),
                        "n": ct.sum(axis=1)})
-pd.concat([purity, ct], axis=1).to_csv(res("banksy_smi_purity.csv"))
+pd.concat([purity, ct], axis=1).to_csv(res("CosMX", "banksy_smi_purity.csv"))
 print(purity)
 
 # Figure. These niche names are OUR reading of the markers, for the legend only; they are not LLM output.
@@ -132,4 +132,4 @@ for ax, col, title in zip(axes, ["Region", "banksy_named"],
     ax.set_title(title, fontsize=10); ax.set_aspect("equal")
     ax.legend(markerscale=8, fontsize=6, loc="upper center", bbox_to_anchor=(0.5, -0.06), ncol=4, frameon=False)
 plt.tight_layout()
-plt.savefig(fig("banksy_smi_vs_truth.png"), dpi=200, bbox_inches="tight")
+plt.savefig(res("CosMX", "banksy_smi_vs_truth.png"), dpi=200, bbox_inches="tight")

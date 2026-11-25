@@ -11,9 +11,6 @@ import scanpy as sc
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "data")
 RESULTS = os.path.join(HERE, "results")
-FIGURES = os.path.join(HERE, "figures")
-for _d in (RESULTS, FIGURES):
-    os.makedirs(_d, exist_ok=True)
 
 # file names written by fetch_data.py
 FILES = {
@@ -28,12 +25,11 @@ def load(name):
     return sc.read_h5ad(os.path.join(DATA, FILES[name]))
 
 
-def res(name):
-    return os.path.join(RESULTS, name)
-
-
-def fig(name):
-    return os.path.join(FIGURES, name)
+def res(dataset, name):
+    """Path of an output file in results/<dataset>/ (Visium, CosMX, MERFISH or STARMAP)."""
+    d = os.path.join(RESULTS, dataset)
+    os.makedirs(d, exist_ok=True)
+    return os.path.join(d, name)
 
 
 def seed_all(seed):
@@ -47,10 +43,11 @@ def seed_all(seed):
         pass
 
 
-def marker_tables(adata_counts, groupby, n=10):
+def marker_tables(adata_counts, groupby, n=10, all_genes=False):
     """One-vs-rest Wilcoxon on raw counts after CP10k + log1p (the Hou & Ji 2024 marker step).
 
-    Returns (genes, log2fc, long): top-n genes per niche, their log2 fold-changes, and a long table.
+    Returns (genes, log2fc, long): top-n genes per niche, their log2 fold-changes, and a long table
+    (top-n rows per niche, or every gene if all_genes=True).
     """
     a = sc.AnnData(adata_counts.X.copy(), obs=adata_counts.obs[[groupby]].copy(), var=adata_counts.var.copy())
     a.obs[groupby] = a.obs[groupby].astype(str).astype("category")
@@ -63,6 +60,8 @@ def marker_tables(adata_counts, groupby, n=10):
     long.columns = ["niche", "gene", "log2FC", "score", "padj"]
     genes = pd.DataFrame({g: long.loc[long.niche == g, "gene"].values for g in groups})
     lfc = pd.DataFrame({g: long.loc[long.niche == g, "log2FC"].round(3).values for g in groups})
+    if all_genes:
+        long = sc.get.rank_genes_groups_df(a, group=None)
     return genes, lfc, long
 
 

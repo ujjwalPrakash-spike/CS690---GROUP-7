@@ -17,3 +17,5 @@ cellcharter>=0.3
 scikit-misc>=0.3
 opencv-python-headless>=4.9
 rpy2>=3.5
+tabulate>=0.9
+requests>=2.31

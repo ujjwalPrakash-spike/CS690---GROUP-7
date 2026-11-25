@@ -1,7 +1,7 @@
 """BANKSY niches on Visium DLPFC 151673, with the settings of the authors' DLPFC tutorial
 (DLPFC_concatenate_multisample.py), then the top-10 Wilcoxon markers per niche.
 
-Writes results/banksy_dlpfc_labels.csv and results/Banksy_DLPFC.xlsx.
+Writes results/Visium/banksy_dlpfc_labels.csv and results/Visium/top10_niche_banksy.csv.
 """
 import tempfile
 
@@ -11,7 +11,7 @@ import scanpy as sc
 from banksy.initialize_banksy import initialize_banksy
 from banksy.run_banksy import run_banksy_multiparam
 
-from common import load, marker_tables, res, save_markers, seed_all
+from common import load, marker_tables, res, seed_all
 
 HVG_URL = ("https://raw.githubusercontent.com/prabhakarlab/Banksy_py/main/"
            "data/DLPFC/simple_concat/output_hvg_median_library.csv")
@@ -63,6 +63,9 @@ print(results_df[["decay", "lambda_param", "resolution", "num_labels", "ari"]])
 # keep the spatial run (lambda 0.2, resolution 0.6); expected: 6 niches, ARI 0.602
 lab = results_df.loc["scaled_gaussian_pc20_nc0.20_r0.60", "labels"]
 counts.obs["niche_banksy"] = pd.Categorical([str(x) for x in lab.dense])
-counts.obs[["Region", "niche_banksy"]].to_csv(res("banksy_dlpfc_labels.csv"))
+counts.obs[["Region", "niche_banksy"]].to_csv(res("Visium", "banksy_dlpfc_labels.csv"))
 
-save_markers(res("Banksy_DLPFC.xlsx"), *marker_tables(counts, "niche_banksy"))
+# top-10 genes per niche, one column per niche (pasted into the prompts)
+genes, _, _ = marker_tables(counts, "niche_banksy")
+genes.columns = [f"niche_{c}" for c in genes.columns]
+genes.to_csv(res("Visium", "top10_niche_banksy.csv"))
